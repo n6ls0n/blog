@@ -15,6 +15,7 @@ user.update!(
 )
 
 
-# 100.times do |i|
-#   BlogPost.create title: "Blog Posts #{i}", content: "Hello world"
-# end
+100.times do |i|
+  blog_post = BlogPost.where(title: "Blog Posts #{i}").first_or_initialize
+  blog_post.update(content: "Hello world", published_at: Time.current)
+end
