@@ -1,4 +1,12 @@
 class BlogPosts::CoverImagesController < ApplicationController
+  # `BlogPosts::CoverImagesController` is a child controller of `ApplicationController`.
+  # `ApplicationController` is the parent controller, and it inherits from `ActionController::Base`.
+  #
+  # The purpose of a child controller is to handle actions related to the child resource.
+  # In this case, the parent resource is `BlogPost`, and the child resource is `CoverImage`.
+  #
+  # By inheriting from `ApplicationController`, we gain access to the functionality defined in `ApplicationController`.
+  # This includes things like authentication, rendering views, and handling HTTP requests.
   include ActionView::RecordIdentifier
 
   before_action :authenticate_user!

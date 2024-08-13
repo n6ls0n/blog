@@ -1,4 +1,16 @@
 class BlogPostsController < ApplicationController
+  # The `before_action` method is used to set up a filter that will run before
+  # each action in the controller. In this case, we're using it to require the
+  # user to be authenticated (`authenticate_user!`) for all actions except for
+  # `index` and `show`.
+  #
+  # The `:except` option is used to specify which actions should _not_ have the
+  # filter applied. In this case, we're specifying that the `index` and `show`
+  # actions should not require authentication.
+  #
+  # So, to summarize, this code ensures that all actions in this controller
+  # require the user to be authenticated, except for the `index` and `show`
+  # actions.
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_blog_post, except: [:index, :new, :create]
 
