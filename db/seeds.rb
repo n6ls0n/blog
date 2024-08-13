@@ -7,7 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-user = User.where(email:"nelson@n6ls0n.com").first_or_initialize
+
+user = User.find_by(email: "nelson@n6ls0n.com")
+user.destroy if user
+user = User.new(email: "nelson@n6ls0n.com")
 
 user.update!(
   password: "password",
@@ -17,5 +20,5 @@ user.update!(
 
 100.times do |i|
   blog_post = BlogPost.where(title: "Blog Posts #{i}").first_or_initialize
-  blog_post.update(content: "Hello world", published_at: Time.current)
+  blog_post.update(content: "Hello world. This is blog post number #{i}.", published_at: Time.current)
 end
