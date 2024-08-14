@@ -58,7 +58,6 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Expose ports for HTTP and HTTPS
 EXPOSE 3000
-# EXPOSE 443
 
 # Start the server by default, this can be overwritten at runtime
 CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000", "-e", "production"]
