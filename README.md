@@ -21,3 +21,5 @@ To test deploying locally w/ http:
 - Build the docker image with "docker-build.sh"
 - Run with "docker-run.sh"
 - Run curl --insecure <https://localhost:3000> (assuming the app is running on port 3000).
+
+This repo is a fork and extension of <https://github.com/gorails-screencasts/learning-path-blog>
