@@ -71,3 +71,9 @@ gem "devise", "~> 4.9"
 gem "tailwindcss-rails", "~> 2.3"
 
 gem "pagy", "~> 7.0"
+
+gem 'sorbet', :group => :development
+
+gem 'sorbet-runtime', :group => :development
+
+gem "tapioca", require: false, :group => [:development, :test]
