@@ -1,8 +1,9 @@
 <%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %>
 
-<p>Published at: <%= @blog_post.published_at %></p>
-
 <%= image_tag @blog_post.cover_image if @blog_post.cover_image.present? %>
 
 <h1><%= @blog_post.title %></h1>
+
+<p>Published at: <%= @blog_post.published_at %></p>
+
 <%= @blog_post.content %>
