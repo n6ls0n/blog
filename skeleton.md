@@ -20,35 +20,35 @@ Entires with a "~" in front are not part of the standard files created with a ba
 
 9. Rakefile: A config file for the Rake build utility that can be used automate different tasks including db migrations, running tests, generating code etc
 
-10. app/
+10. app/: The core components of the Rails application
 
-11. bin/
+11. bin/: A set of executable shell scripts that are used during development for various things such as running the server, bundling , running yarn etc
 
-12. config/
+12. config/: A set of config files that determine how the app behaves in different environments
 
 13. config.ru: The entry point for Rack-based servers to start the Rails application
 
-14. db/
+14. db/: Database related files including seeding and migration files
 
 15. ~docker-build.sh: Custom shell file for automating building the blog container
 
 16. ~docker-run.sh: Custom shell file for automating running the blog container locally
 
-17. lib/
+17. lib/: Additional files that are necessary for the app but don't fit into the MVC paradigm
 
 18. ~localhost.conf: Used to configure an nginx server
 
-19. log/
+19. log/: Contains log files from the application
 
-20. public/
+20. public/: This serves as the document root for the web server and contains static files and assets that are directly accessible form web browsers without having to go through the Rails stack
 
-21. storage/
+21. storage/: Used by ActiveStorage and also contains SQLite db files
 
-22. test/
+22. test/: COntains the test files for the application
 
-23. tmp/
+23. tmp/: Used for storing temporary files and caches
 
-24. vendor/
+24. vendor/: Used to store thrid-party code that is not managed by Bundler
 
 25. .env: Used to store environment specific variables such as the SECRET_KEY_BASE. This file should be omitted from git
 
