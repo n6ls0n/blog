@@ -12,4 +12,4 @@
 
     1. Read <https://rubyonrails.org/2024/11/7/rails-8-no-paas-required>
 
-    2. Figure out if it's possible to use current NGINX reverse proxy with Kamal, Kamal Proxy and Thruster
+    2. Figure out if it's possible to use current NGINX reverse proxy with Kamal, Kamal Proxy and Thruster <https://nts.strzibny.name/multiple-apps-single-server-kamal-2/>
