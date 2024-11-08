@@ -2,8 +2,6 @@
 
 ## Blog Edits
 
-- Home Button on each blog post page
-
 - Add dark mode <https://nts.strzibny.name/dark-mode-tailwind-stimulus/>
 
 - Add analytics <https://github.com/BaseSecrete/active_analytics> && <https://bootrails.com/blog/rails-analytics-made-simple/#add-active_analytics>
