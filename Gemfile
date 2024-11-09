@@ -81,3 +81,5 @@ gem "tapioca", require: false, :group => [:development, :test]
 gem 'inline_svg'
 
 gem 'active_analytics'
+
+gem 'crawler_detect'
