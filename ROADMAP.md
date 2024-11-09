@@ -2,14 +2,16 @@
 
 ## Blog Edits
 
-- Add dark mode <https://nts.strzibny.name/dark-mode-tailwind-stimulus/>
+- Add analytics
 
-- Add analytics <https://github.com/BaseSecrete/active_analytics> && <https://bootrails.com/blog/rails-analytics-made-simple/#add-active_analytics>
+  - Read <https://github.com/BaseSecrete/active_analytics> && <https://bootrails.com/blog/rails-analytics-made-simple/#add-active_analytics>
 
-- Setup the Docker container to use an attached volume <https://docs.docker.com/guides/docker-concepts/running-containers/persisting-container-data/>
+  - Add web crawler detection
 
-- Upgrade to 8.0.0
+  - Implement to only be accessible by logged-in users
 
-    1. Read <https://rubyonrails.org/2024/11/7/rails-8-no-paas-required>
+  - Convert to async w/ Solid Queue
 
-    2. Figure out if it's possible to use current NGINX reverse proxy with Kamal, Kamal Proxy and Thruster <https://nts.strzibny.name/multiple-apps-single-server-kamal-2/>
+- Migrate Deployment to Kamal, Kamal Proxy & Thruster <https://nts.strzibny.name/multiple-apps-single-server-kamal-2>
+
+- Add dark mode
