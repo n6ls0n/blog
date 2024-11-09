@@ -2,11 +2,9 @@
 
 ## Blog Edits
 
-- Add analytics
+- Add analytics <https://github.com/BaseSecrete/active_analytics>
 
-  - Read <https://github.com/BaseSecrete/active_analytics> && <https://bootrails.com/blog/rails-analytics-made-simple/#add-active_analytics>
-
-  - Add web crawler detection
+  - Add web crawler detection <https://bootrails.com/blog/rails-analytics-made-simple/#is-analytics-for-rails-able-to-tackle-bots->
 
   - Implement to only be accessible by logged-in users
 
