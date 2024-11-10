@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resource :cover_image, only: [:destroy], module: :blog_posts
   end
 
-  mount ActiveAnalytics::Engine, at: "analytics"
+  authenticate :user do
+    mount ActiveAnalytics::Engine, at: "analytics"
+  end
 
   # Defines the root path route ("/")
   root "blog_posts#index"
