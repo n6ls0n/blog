@@ -14,4 +14,6 @@
 
   - Convert from Redis to Solid Queue for async
 
+- Add monitoring <https://github.com/igorkasyanchuk/rails_performance>
+
 - Add dark mode
