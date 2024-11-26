@@ -11,8 +11,8 @@ proxy:
   host: app.example.com # Proxy connects to your container on port 80 by default.
 
 registry:
-  username: my-user
-
+  username:
+    - KAMAL_REGISTRY_PASSWORD
   password:
     - KAMAL_REGISTRY_PASSWORD
 
