@@ -12,7 +12,7 @@ proxy:
 
 registry:
   username:
-    - KAMAL_REGISTRY_PASSWORD
+    - DOCKER_USERNAME
   password:
     - KAMAL_REGISTRY_PASSWORD
 
@@ -25,8 +25,8 @@ env:
     - RAILS_MASTER_KEY
 
 # Use a persistent storage volume.
-volumes:
-  - "/home/nelson/sqlitedb:/storage/"
+# volumes:
+#   - "/home/nelson/sqlitedb:storage/"
 
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
 # "bin/kamal logs -r job" will tail logs from the first server in the job section.
