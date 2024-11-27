@@ -2,7 +2,7 @@
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 ARG RUBY_VERSION=3.3.0
-FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
+FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
 WORKDIR /rails
@@ -14,7 +14,7 @@ ENV RAILS_ENV="production" \
     BUNDLE_WITHOUT="development"
 
 # Throw-away build stage to reduce size of final image
-FROM base as build
+FROM base AS build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
@@ -49,16 +49,23 @@ COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
 # Run and own only the runtime files as a non-root user for security
-RUN useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
+# RUN useradd rails --create-home --shell /bin/bash && \
+#     chown -R rails:rails db log storage tmp
+# USER rails:rails
+
+# Create necessary directories, add non-root user, and set permissions
+RUN mkdir -p /rails/db /rails/log /rails/storage /rails/tmp && \
+    useradd rails --create-home --shell /bin/bash && \
+    chown -R rails:rails /rails/db /rails/log /rails/storage /rails/tmp
 USER rails:rails
+
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Expose ports for HTTP and HTTPS
 EXPOSE 3000
-# EXPOSE 443
+EXPOSE 443
 
 # Start the server by default, this can be overwritten at runtime
 CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000", "-e", "production"]
