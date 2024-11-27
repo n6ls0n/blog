@@ -8,7 +8,7 @@ servers:
 
 proxy:
   ssl: true
-  host: n6ls0n.com # Proxy connects to your container on port 80 by default.
+  host: n6ls0n.com
 
 registry:
   username:
@@ -23,7 +23,6 @@ builder:
 env:
   secret:
     - RAILS_MASTER_KEY
-    - SECRET_KEY_BASE
 
 # Use a persistent storage volume.
 # volumes:
