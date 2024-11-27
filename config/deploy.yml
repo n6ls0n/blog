@@ -1,6 +1,6 @@
 service: n6ls0n-dot-com
 
-image: n6ls0n/n6ls0n-dot-com
+image: nelsoncnwauche/images
 
 servers:
   web:
