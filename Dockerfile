@@ -32,11 +32,18 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
+# Copy the master key if it's available
+RUN if [ -n "$RAILS_MASTER_KEY" ]; then echo "$RAILS_MASTER_KEY" > config/master.key; fi
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN RAILS_MASTER_KEY=${RAILS_MASTER_KEY} ./bin/rails assets:precompile
+# Precompiling assets for production
+RUN if [ -n "$RAILS_MASTER_KEY" ]; then \
+      bundle exec rails assets:precompile; \
+    else \
+      echo "RAILS_MASTER_KEY is not set. Skipping asset precompilation."; \
+    fi
 
 # Final stage for app image
 FROM base
@@ -50,23 +57,20 @@ RUN apt-get update -qq && \
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
-# Run and own only the runtime files as a non-root user for security
-# RUN useradd rails --create-home --shell /bin/bash && \
-#     chown -R rails:rails db log storage tmp
-# USER rails:rails
+# Ensure the master key has the correct permissions
+RUN if [ -f /rails/config/master.key ]; then chmod 600 /rails/config/master.key; fi
 
 # Create necessary directories, add non-root user, and set permissions
 RUN mkdir -p /rails/db /rails/log /rails/storage /rails/tmp && \
     useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails /rails/db /rails/log /rails/storage /rails/tmp
+    chown -R rails:rails /rails/db /rails/log /rails/storage /rails/tmp /rails/config/master.key
 USER rails:rails
-
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
-# Expose ports for HTTP and HTTPS
+# Expose ports for HTTP
 EXPOSE 3000
 
 # Start the server by default, this can be overwritten at runtime
-CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000", "-e", "production"]
+CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
