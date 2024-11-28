@@ -18,6 +18,9 @@ registry:
 
 builder:
   arch: amd64
+  context: .
+  args:
+    RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
